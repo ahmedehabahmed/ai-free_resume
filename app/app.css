@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @theme {
   --font-sans:
@@ -27,6 +26,39 @@ body {
 main {
   @apply min-h-screen pt-10;
 }
+
+.interactive-background {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 18% 8%,
+      rgba(196, 207, 255, 0.48),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 85% 32%,
+      rgba(255, 222, 230, 0.4),
+      transparent 36%
+    ),
+    linear-gradient(145deg, #e3e3e8 0%, #fff 52%, #d5d6d9 100%);
+}
+
+.interactive-background > :not(.particle-background) {
+  position: relative;
+  z-index: 1;
+}
+
+.particle-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 h1 {
   @apply max-sm:text-[3rem] text-6xl  text-gradient leading-tight xl:tracking-[-2px] font-semibold;
 }
@@ -51,9 +83,6 @@ form {
 }
 
 @layer components {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
-  }
   .gradient-border {
     @apply bg-linear-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
   }
@@ -152,5 +181,3 @@ form {
     opacity: 1;
   }
 }
-
-
