@@ -1,5 +1,17 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", ".react-router/types/**/*"],
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "constants/**/*.ts",
+    "types/**/*.d.ts",
+    ".react-router/types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "Ctempai-resume-vite",
+    "eDesktopcv projectsai resume"
+  ],
   "compilerOptions": {
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "types": ["node", "vite/client"],
