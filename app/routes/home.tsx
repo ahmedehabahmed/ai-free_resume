@@ -4,6 +4,9 @@ import Navbar from "../components/Navbar";
 import ParticleBackground from "../components/ParticleBackground";
 import { resumes } from "../../constants";
 import ResumeCards from "~/components/ResumeCards";
+import { usePuterStore } from "~/lib/puter";
+import { useLocation, useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,10 +16,24 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+
+
+
+  const {auth} = usePuterStore()
+  
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!auth.isAuthenticated)navigate('/auth?next=/');
+      // Handle authenticated state
+    
+  }, [auth.isAuthenticated ]);
+
+
   return (
     <main className="interactive-background">
       <ParticleBackground />
       <Navbar />
+    
       <section className="main-section">
         <div className="page-heading py-16">
           <h1>track your applications and get AI-powered feedback</h1>
